@@ -1,0 +1,9 @@
+*/
+*
+!vimfiles/
+!vimfiles/*
+!vimfiles/**/
+!vimfiles/**/*
+!.vimrc
+!.gitignore
+!ReadMe.md
