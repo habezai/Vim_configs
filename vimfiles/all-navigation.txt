@@ -1,0 +1,31 @@
+# 所有资源导航
+## 提示词列表
+gvim --remote-tab-silent  AI教学提示词.txt
+
+## 其他导航文件
+gvim --remote-tab-silent  openssl命令行笔记.txt
+
+## 工程导航
+### U2C工程
+//todo
+### TC3xx工程
+//todo
+
+## 文件导航
+### 工具文档
+:: Multi脚本教程
+FoxitPDFReader.exe /A "page=47" "D:\yufeng.huang\_DoNotRemove\Books\debug_cmd.pdf"
+:: sage 中文手册
+FoxitPDFReader.exe /A "page=1" "D:\yufeng.huang\_DoNotRemove\Books\UserManuals\sage_tutorial.pdf"
+
+### 芯片手册
+:: RH850 U2A Security
+FoxitPDFReader.exe /A "page=118" "D:\yufeng.huang\_DoNotRemove\Books\UserManuals\RH850U2A_ICUMHA_MAH_20220831-6678-7298.pdf"
+:: RH850 U2C Security
+FoxitPDFReader.exe /A "page=151" "D:\yufeng.huang\_DoNotRemove\Books\UserManuals\U2C SECURITY UM.pdf"
+:: RH850 U2C Hardware
+// todo
+:: TC3xx Hardware
+FoxitPDFReader.exe /A "page=34" "D:\yufeng.huang\_DoNotRemove\Books\UserManuals\Infineon-AURIX_TC3xx_Part1-UserManual-v01_00-EN.pdf"
+:: TC3xx HSM
+FoxitPDFReader.exe /A "page=35" "D:\yufeng.huang\_DoNotRemove\Books\UserManuals\AURIX TC3xx Hardware Security Module.pdf"

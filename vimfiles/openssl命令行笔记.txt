@@ -1,0 +1,27 @@
+# Openssl
+openssl version & pause
+openssl list -mac-algorithms & pause
+
+# SM4 CMAC examples
+openssl mac -cipher SM4-CBC -macopt hexkey:00112233445566778899aabbccddeeff -in 1a-2048.bin CMAC & pause
+
+openssl mac -cipher SM4-CBC -macopt hexkey:00112233445566778899aabbccddeeff -in 1a1a.bin CMAC & pause
+echo -n '1a1a' | xxd -r -p | openssl mac -cipher SM4-CBC -macopt hexkey:00112233445566778899aabbccddeeff CMAC & pause
+echo -n '1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a' | xxd -r -p | openssl mac -cipher SM4-CBC -macopt hexkey:00112233445566778899aabbccddeeff CMAC & pause
+echo -n '1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a' | xxd -r -p | openssl mac -cipher SM4-CBC -macopt hexkey:00112233445566778899aabbccddeeff CMAC & pause
+
+# AES GMAC examples
+openssl mac -cipher AES-128-GCM -macopt hexiv:E0E00F19FED7BA0136A797F3 -macopt hexkey:77A77FAF290C1FA30C683DF16BA7A77B -in msg.bin GMAC & pause
+
+# KMAC
+openssl mac -macopt custom:Tag -macopt hexkey:40414243444546 -macopt size:16 -in msg.bin KMAC128 & pause
+
+# AES CMAC
+openssl mac -cipher AES-128-CBC -macopt hexkey:77A77FAF290C1FA30C683DF16BA7A77B -in msg.bin CMAC & pause
+openssl mac -cipher AES-128-CBC -macopt hexkey:00112233445566778899aabbccddeeff -in 1a-2048.bin CMAC & pause
+
+# HMAC SHA1
+openssl mac -digest SHA1 -macopt hexkey:000102030405060708090A0B0C0D0E0F10111213 -in msg.bin HMAC & pause
+
+# SipHash MAC
+openssl mac -macopt hexkey:000102030405060708090A0B0C0D0E0F -in msg.bin -out out.bin -binary SipHash & pause

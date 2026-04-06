@@ -1,0 +1,8 @@
+帮我写一个 用于培训新手的 教学示范用的 实际调试过程中的 multi 脚本 cheatsheet，让他快速上手脚本控制ghs，以及体会到脚本的便利。
+-----------------------
+Background = 调试场景
+Content = multi脚本
+Target = 脚本控制GHS
+帮我写一个 用于培训新手的 教学示范用的 实际{Background}中的{Content}的 cheatsheet，
+教学目标：让新手实现快速上手{Target}， 以及体会到 {Content} 的实用性和强大。
+
