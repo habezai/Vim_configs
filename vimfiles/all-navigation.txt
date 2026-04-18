@@ -29,3 +29,9 @@ FoxitPDFReader.exe /A "page=151" "D:\yufeng.huang\_DoNotRemove\Books\UserManuals
 FoxitPDFReader.exe /A "page=34" "D:\yufeng.huang\_DoNotRemove\Books\UserManuals\Infineon-AURIX_TC3xx_Part1-UserManual-v01_00-EN.pdf"
 :: TC3xx HSM
 FoxitPDFReader.exe /A "page=35" "D:\yufeng.huang\_DoNotRemove\Books\UserManuals\AURIX TC3xx Hardware Security Module.pdf"
+
+### 信息安全读物
+:: Cryptography Algorithms, Protocols, and Standards for Computer Security 
+FoxitPDFReader.exe "D:\yufeng.huang\_DoNotRemove\Books\Cryptography Algorithms, Protocols, and Standards for Computer Security (Zoubir Mammeri).pdf"
+:: worfSSl HSM
+FoxitPDFReader.exe "D:\yufeng.huang\_DoNotRemove\Books\UserManuals\wolfHSM-Manual.pdf"
