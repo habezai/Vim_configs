@@ -4,6 +4,12 @@
 !vimfiles/*
 !vimfiles/**/
 !vimfiles/**/*
+
+!task_demos/
+!task_demos/*
+!task_demos/**/
+!task_demos/**/*
+
 !.vimrc
 !.gitignore
 !ReadMe.md
