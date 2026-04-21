@@ -37,7 +37,7 @@ if(g:isGUI)
 else
     "终端vim下的配置
     " 判断变量 myflag 是否存在
-    if !exists("g:myflag_colorscheme")
+    if !exists("g:myflag_colorscheme") && !has('nvim')
         " 在这里编写您希望只使用一次的配置
         colorscheme monokai "设置配色方案，在~/.vim/colors/目录下提前放置molokai.vim
         " 将变量 myflag_colorscheme 设置为已存在，避免重复执行
@@ -165,7 +165,7 @@ nnoremap <silent><s-tab> :tabprevious<CR>
 " }}}
 " < Basic Settings基础设置(set) >  {{{
 " -----------------------------------------------------------------------------
-if(g:isWindows)
+if(g:isWindows && !has('nvim'))
     "设置python3的dll路径。可能很多插件依赖它。
     set pythonthreedll=C:/Users/yufeng.huang/AppData/Local/Programs/Python/Python37/python37.dll
     " 这是一种 set 选项为变量的方法
@@ -603,41 +603,45 @@ augroup vim__
 augroup END
 "}}}
 if g:myvim_wants_pure_config == 1
-        " 画面中央弹出弹窗，显示消息，移动光标就关闭弹窗
+    " 画面中央弹出弹窗，显示消息，移动光标就关闭弹窗
+    if !has('nvim')
         let options = { 
                     \ 'highlight': 'WarningMsg',
                     \ 'moved':"any",
                     \ 'border':[3,3,3,3],
                     \ }
         let popup_id = popup_create('Vim pure config!', options)
+    endif
+    if !has('nvim')
         if(g:isWindows)
-            call plug#begin('~/.vimfiles/plugged') "这里规定安装目录,中间各行代表获取的插件
-        else
-            call plug#begin('~/.vim/plugged') "这里规定安装目录,中间各行代表获取的插件
-        endif
-        " 只启动vim(未指定文件名)的时候 提供的一些辅助功能，比如显示最近打开文件,以及一个好看的图标。开箱即用。
-        Plug 'mhinz/vim-startify'
-        "auto-pairs 括号自动补全
-        Plug 'jiangmiao/auto-pairs'
-        "css的颜色直接渲染在文本上
-        Plug 'ap/vim-css-color'
-        "复制（yanked）的文本高亮一下
-        Plug 'machakann/vim-highlightedyank'
-        let g:highlightedyank_highlight_duration = 500 "设置为负一的话则是持续高亮"
-        let g:highlightedyank_highlight_in_visual = 0 "可视模式下不搞这花里胡哨的
-        "indentLine添加一些分割线 比如你写python的时候 格式对齐 就可以通过这个分割线
-        Plug 'Yggdroot/indentLine'
-        let g:indentLine_fileType = ["c","cpp","python","html"]
-        " 大名鼎鼎的vimwiki
-        Plug 'vimwiki/vimwiki'
-        set runtimepath+=~\vimfiles\plugged\vimwiki\
-        let g:vimwiki_list = [
-            \ {'path': '~\vimwiki\my-personal-wiki\', 'css_name': 'style.css'},
-            \ {'path': '~\vimwiki\my-thesis\', 'css_name': 'style.css'},
-            \ ]
-        autocmd FileType vimwiki setlocal shiftwidth=4 tabstop=4 noexpandtab
-        call plug#end()
-else
+        call plug#begin('~/.vimfiles/plugged') "这里规定安装目录,中间各行代表获取的插件
+    else
+        call plug#begin('~/.vim/plugged') "这里规定安装目录,中间各行代表获取的插件
+    endif
+    " 只启动vim(未指定文件名)的时候 提供的一些辅助功能，比如显示最近打开文件,以及一个好看的图标。开箱即用。
+    Plug 'mhinz/vim-startify'
+    "auto-pairs 括号自动补全
+    Plug 'jiangmiao/auto-pairs'
+    "css的颜色直接渲染在文本上
+    Plug 'ap/vim-css-color'
+    "复制（yanked）的文本高亮一下
+    Plug 'machakann/vim-highlightedyank'
+    let g:highlightedyank_highlight_duration = 500 "设置为负一的话则是持续高亮"
+    let g:highlightedyank_highlight_in_visual = 0 "可视模式下不搞这花里胡哨的
+    "indentLine添加一些分割线 比如你写python的时候 格式对齐 就可以通过这个分割线
+    Plug 'Yggdroot/indentLine'
+    let g:indentLine_fileType = ["c","cpp","python","html"]
+    " 大名鼎鼎的vimwiki
+    Plug 'vimwiki/vimwiki'
+    set runtimepath+=~\vimfiles\plugged\vimwiki\
+    let g:vimwiki_list = [
+                \ {'path': '~\vimwiki\my-personal-wiki\', 'css_name': 'style.css'},
+                \ {'path': '~\vimwiki\my-thesis\', 'css_name': 'style.css'},
+                \ ]
+    autocmd FileType vimwiki setlocal shiftwidth=4 tabstop=4 noexpandtab
+    call plug#end()
+endif
+    else
 endif
 
 " 这下面是笔记，或者是教程
