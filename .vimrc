@@ -26,7 +26,9 @@ if(g:isGUI)
     "Gvim行距 linespace
     set linespace=4
 
-    if ( &filetype != 'vim' )
+    if( has('nvim') )
+        colorscheme torte
+    elseif ( &filetype != 'vim' )
         colorscheme wwdc16 "motus 或者 gruvbox8_hard  或者 wwdc16
     endif
 
@@ -564,7 +566,7 @@ augroup markdown__
     autocmd!
     "设置折叠方式为语法 "打开文件时全部折叠
     autocmd filetype markdown call s:VimwikiSettings()
-    "colorscheme motus | 
+
     function! s:VimwikiSettings() abort
         "vimrc 注释一行快捷键
         setlocal foldlevelstart=0 | setlocal foldmethod=syntax
@@ -579,7 +581,7 @@ augroup vimwiki__
     "设置折叠方式为语法 "打开文件时全部折叠
     autocmd BufWritePre *.wiki execute 'VimwikiTOC'
     autocmd filetype vimwiki call s:VimwikiSettings()
-    "colorscheme motus | 
+
     function! s:VimwikiSettings() abort
         "vimrc 注释一行快捷键
         setlocal foldlevelstart=0 | setlocal foldmethod=syntax
@@ -595,7 +597,7 @@ augroup vim__
     "设置折叠方式为手动标记 "打开文件时全部折叠
     autocmd BufReadPost .vimrc setlocal foldlevelstart=0 | setlocal foldmethod=marker
     autocmd filetype vim call s:VimSettings()
-    "colorscheme motus | 
+
     function! s:VimSettings() abort
         "vimrc 注释一行快捷键
         nnoremap <buffer> <localleader>c I"<space><esc>
