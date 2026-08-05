@@ -1,6 +1,7 @@
 let g:myvim_wants_pure_config = 1
 if has("gui_running")
-    iab xtime <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr>
+    iabbrev xtime <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr>
+    imap <special> @time <C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR>
 endif
 
 "  < 判断是终端还是 Gvim > {{{
@@ -276,7 +277,7 @@ inoreabbrev fisrt first
 inoreabbrev retuen return
 inoreabbrev retrun return
 "个人常用信息
-inoreabbrev @@ icebggg@qq.com
+inoreabbrev @@ 1009157870@qq.com
 inoreabbrev @z //@hyf
 inoreabbrev z@ //fyh@
 inoreabbrev ccopy Copyright 2021 Yufeng Huang, all rights reserved.
