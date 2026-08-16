@@ -10,6 +10,9 @@
 !task_demos/**/
 !task_demos/**/*
 
+!vim91/
+!vim91/todo.bat
+
 !.vimrc
 !.gitignore
 !ReadMe.md
