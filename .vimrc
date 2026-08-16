@@ -1,7 +1,7 @@
 let g:myvim_wants_pure_config = 1
 if has("gui_running")
     iabbrev xtime <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr>
-    imap <special> @time <C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR>
+    imap <special> @t <C-r>=strftime("[%Y-%m-%d %H:%M:%S]")<CR>
 endif
 
 "  < 判断是终端还是 Gvim > {{{

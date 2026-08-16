@@ -21,22 +21,34 @@ function! k_runner#api#RunBatCmd()
     endif
 
     if(g:k_runner_turn_on)
-        " 获取当前行内容
-        let cmd = getline('.')
+        " 获取当前行完整内容
+        let current_line = getline('.')
 
-        " 跳过注释和空行
-        if cmd =~ '^\s*$' || cmd =~ '^\(rem\|::\)'
+        " 1. 先处理空行和注释行的原有逻辑
+        if current_line =~ '^\s*$' || current_line =~ '^\(rem\|::\)'
             echo "Skipping comment or empty line"
             return
         endif
 
-        " 清理命令
-        let cmd = substitute(cmd, '^\s*\(.\{-}\)\s*$', '\1', '')
+        " 2. 扩展匹配规则：支持任意数量前置点号+cmd:
+        " 正则说明：
+        " ^\s*          行首可以有任意空白字符
+        " \.*           匹配0个或多个前置点号（支持.cmd:、..cmd:、...cmd:）
+        " cmd:          匹配cmd:关键字
+        " \s*           cmd:后面可以有任意空白字符
+        " .*            后面跟实际命令内容
+        if current_line !~# '^\s*\.*cmd:\s*.*'
+            echoerr "本行消息并不是以cmd:起始，当前行原始内容为：[" . current_line . "]"
+            return
+        endif
 
+        " 3. 提取最终要执行的命令：自动忽略所有前置点号、空白和cmd:前缀
+        let cmd = substitute(current_line, '^\s*\.*cmd:\s*\(.*\)\s*$', '\1', '')
+
+        " 4. 保留原有执行逻辑
         echo "Executing: " . cmd
-
         " Windows后台执行
-        silent execute '!start cmd /c "' . cmd 
+        silent execute '!start cmd /c "' . cmd .'"'
 
         " 返回Vim
         redraw!
